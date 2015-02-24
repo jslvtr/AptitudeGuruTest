@@ -11,7 +11,8 @@
 # Generated files
 bin/
 gen/
-
+.settings/
+proguard-project.txt
 # Gradle files
 .gradle/
 build/
