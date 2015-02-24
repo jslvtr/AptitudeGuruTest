@@ -31,9 +31,14 @@ public class TestQuantitativeQuestions extends InstrumentationTestCase {
 	}
 	
 	public void testDuplicateQuestions() {
-		List<MultipleAnswerTable> questionWithCategory = db.getQuantitativeTestQuestionsWithCategory("q1");
-		Set<MultipleAnswerTable> questionSet = new HashSet<MultipleAnswerTable>(questionWithCategory);
-		assertEquals(questionWithCategory.size(), questionSet.size());
+		for(int index = 1; index <= 14; index++) {
+			List<MultipleAnswerTable> questionWithCategory = db.getQuantitativeTestQuestionsWithCategory("q" + index);
+			Set<String> questionSet = new HashSet<String>();
+			for(int questionIndex = 0; questionIndex < questionWithCategory.size(); questionIndex++) {
+				questionSet.add(questionWithCategory.get(questionIndex).getQuestion());
+			}
+			assertEquals(questionWithCategory.size(), questionSet.size());
+		}
 	}
 	
 	public void testQuestionCategoryMatchesParameter() {
