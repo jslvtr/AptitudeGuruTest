@@ -23,7 +23,15 @@ public class TestQuantitativeQuestions extends InstrumentationTestCase {
 	}
 	
 	public void testRandomQuestions() {
-		
+		List<MultipleAnswerTable> questions = db.getRandomizedQuantitativeQuestionsWithCategory("q1");
+		List<MultipleAnswerTable> questionsCompare = db.getRandomizedQuantitativeQuestionsWithCategory("q1");
+		int equalElements = 0;
+		for (int questionIndex=0; questionIndex < questions.size(); questionIndex++)
+		{
+			if (questions.get(questionIndex).getQuestion().equals(questionsCompare.get(questionIndex).getQuestion()))
+				equalElements++;
+		}
+		assertFalse(equalElements == questions.size());
 	}
 	
 	public void testTwentyQuestions() {
