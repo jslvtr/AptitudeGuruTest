@@ -34,8 +34,12 @@ public class TestQuantitativeQuestions extends InstrumentationTestCase {
 		assertFalse(equalElements == questions.size());
 	}
 	
+	
+	
 	public void testTwentyQuestions() {
-		
+		for(int category = 1; category <= 10; category++) {
+			assertEquals(db.getQuantitativeTestQuestionsWithCategory("q" + category).size(), 20);
+		}
 	}
 	
 	public void testDuplicateQuestions() {
