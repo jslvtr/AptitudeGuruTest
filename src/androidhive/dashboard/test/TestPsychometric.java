@@ -29,7 +29,7 @@ public class TestPsychometric extends InstrumentationTestCase {
 	 */
 	
 	public void testQuestionCategoryMatchesParameter() {
-		List<PsychometricAnswer> psychometric = db.getAllPsycometric("scenario1");
+		List<PsychometricAnswer> psychometric = db.getAllPsychometric("scenario1");
 		Iterator<PsychometricAnswer> itr = psychometric.iterator();
 		while(itr.hasNext()) {
 			PsychometricAnswer psychometricQuestion = itr.next();
@@ -38,7 +38,7 @@ public class TestPsychometric extends InstrumentationTestCase {
 	}
 	
 	public void testMoreThanOneQuestion() {
-		List<PsychometricAnswer> psychometric = db.getAllPsycometric("scenario1");
+		List<PsychometricAnswer> psychometric = db.getAllPsychometric("scenario1");
 		assertTrue(psychometric.size() > 0);
 	}
 	
