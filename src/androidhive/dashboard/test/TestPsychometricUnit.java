@@ -4,22 +4,26 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.test.InstrumentationTestCase;
+import android.util.Log;
 
 import com.aptitudeguru.dashboard.DatabaseHandler;
 import com.aptitudeguru.dashboard.PsychometricAnswer;
+import com.aptitudeguru.dashboard.tests.TestPsychometric;
 
-public class TestPsychometric extends InstrumentationTestCase {
+public class TestPsychometricUnit extends InstrumentationTestCase {
 
 	
-	public TestPsychometric() {
+	public TestPsychometricUnit() {
 		super();
 	}
 	
 	private DatabaseHandler db;
+	private TestPsychometric psycho;
 	
 	
 	protected void setUp() {
 		db = new DatabaseHandler(this.getInstrumentation().getTargetContext().getApplicationContext());
+		psycho = new TestPsychometric();
 	}
 	
 	
@@ -37,9 +41,34 @@ public class TestPsychometric extends InstrumentationTestCase {
 		}
 	}
 	
+	/*
+	 * 
+	 * 	Checks if there is questions available
+	 * 
+	 */
+	
 	public void testMoreThanOneQuestion() {
 		List<PsychometricAnswer> psychometric = db.getAllPsychometric("scenario1");
 		assertTrue(psychometric.size() > 0);
 	}
 	
+	public void testCheckIfInputIsCorrect()	{
+		assertTrue(psycho.isValidInput("A"));
+	}
+	
+	public void testCheckIfInputIsIncorrect()	{
+		assertFalse(psycho.isValidInput("Z"));
+	}
+	
+	public void testCheckIfInpuSpacetIsIncorrect()	{
+		assertFalse(psycho.isValidInput(" "));
+	}
+	
+	public void testCheckIfInputCharacterIsIncorrect()	{
+		assertFalse(psycho.isValidInput(";"));
+	}
+	
+	public void checkIfDuplicateEntries()	{
+		
+	}
 }
