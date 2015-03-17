@@ -68,7 +68,18 @@ public class TestPsychometricUnit extends InstrumentationTestCase {
 		assertFalse(psycho.isValidInput(";"));
 	}
 	
-	public void checkIfDuplicateEntries()	{
-		
+	public void testCheckIfDuplicateEntries()	{
+		assertTrue(psycho.areAnswersDuplicate("A", "A"));
 	}
+	
+	public void testCheckIfDuplicateSymbolEntries()	{
+		assertTrue(psycho.areAnswersDuplicate("@", "@"));
+	}
+	
+	
+	
+	public void testCheckIfNotDuplicateEntries()	{
+		assertFalse(psycho.areAnswersDuplicate("A", "B"));
+	}
+
 }
