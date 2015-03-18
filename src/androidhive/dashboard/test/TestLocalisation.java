@@ -59,8 +59,25 @@ public class TestLocalisation extends InstrumentationTestCase {
 	
 	public void testChangeDistanceUnitsToImperial(){
 		final String oldUnits = "Here you go, have 10 km";
+		final String kmph = "Here you go, have 10 kmph kmphate";
+		final String kmphr = "Here you go, have 10 km/hr pal";
+		final String kmh = "Here you go, have 10 km/h son";
+		final String kilometres = "Here you go, have 10 kilometres ok";
+		final String kilometers = "Here you go, have 10 kilometers.";
+		
 		final String newUnits =  LocalisationUtilities.changeDistanceUnitsToImperial(oldUnits);
+		final String kmphNewUnits =  LocalisationUtilities.changeDistanceUnitsToImperial(kmph);
+		final String kmphrNewUnits =  LocalisationUtilities.changeDistanceUnitsToImperial(kmphr);
+		final String kmhNewUnits =  LocalisationUtilities.changeDistanceUnitsToImperial(kmh);
+		final String kilometresNewUnits =  LocalisationUtilities.changeDistanceUnitsToImperial(kilometres);
+		final String kilometersNewUnits =  LocalisationUtilities.changeDistanceUnitsToImperial(kilometers);
+		
 		assertEquals(newUnits, "Here you go, have 10 miles");
+		assertEquals(kmphNewUnits, "Here you go, have 10 mph kmphate");
+		assertEquals(kmphrNewUnits, "Here you go, have 10 miles/hr pal");
+		assertEquals(kmhNewUnits, "Here you go, have 10 miles/h son");
+		assertEquals(kilometresNewUnits, "Here you go, have 10 miles ok");
+		assertEquals(kilometersNewUnits, "Here you go, have 10 miles.");
 	}
 	
 	public void testChangeDistanceUnitsForCountryCode(){
