@@ -52,9 +52,23 @@ public class TestLocalisation extends InstrumentationTestCase {
 	}
 	
 	public void testChangeDistanceUnitsToMetric(){
-		final String oldUnits = "Here you go, have 10 miles";
-		final String newUnits =  LocalisationUtilities.changeDistanceUnitsToMetric(oldUnits);
-		assertEquals(newUnits, "Here you go, have 10 km");
+		final String miles = "Here you go, have 10 miles";
+		final String mph = "Here you go, have 10 mph mphate";
+		final String mileshr = "Here you go, have 10 miles/hr pal";
+		final String milesh = "Here you go, have 10 miles/h son";
+		final String milesFullStopHr = "Here you go, have 10 miles.hr son";
+		
+		final String milesNewUnits =  LocalisationUtilities.changeDistanceUnitsToMetric(miles);
+		final String mphNewUnits =  LocalisationUtilities.changeDistanceUnitsToMetric(mph);
+		final String mileshrNewUnits =  LocalisationUtilities.changeDistanceUnitsToMetric(mileshr);
+		final String mileshNewUnits =  LocalisationUtilities.changeDistanceUnitsToMetric(milesh);
+		final String milesFullStopHrNewUnits =  LocalisationUtilities.changeDistanceUnitsToMetric(milesFullStopHr);
+		
+		assertEquals(milesNewUnits, "Here you go, have 10 km");
+		assertEquals(mphNewUnits, "Here you go, have 10 km/hr mphate");
+		assertEquals(mileshrNewUnits, "Here you go, have 10 km/hr pal");
+		assertEquals(mileshNewUnits, "Here you go, have 10 km/hr son");
+		assertEquals(milesFullStopHrNewUnits, "Here you go, have 10 km/hr son");
 	}
 	
 	public void testChangeDistanceUnitsToImperial(){
@@ -73,9 +87,9 @@ public class TestLocalisation extends InstrumentationTestCase {
 		final String kilometersNewUnits =  LocalisationUtilities.changeDistanceUnitsToImperial(kilometers);
 		
 		assertEquals(newUnits, "Here you go, have 10 miles");
-		assertEquals(kmphNewUnits, "Here you go, have 10 mph kmphate");
+		assertEquals(kmphNewUnits, "Here you go, have 10 miles/hr kmphate");
 		assertEquals(kmphrNewUnits, "Here you go, have 10 miles/hr pal");
-		assertEquals(kmhNewUnits, "Here you go, have 10 miles/h son");
+		assertEquals(kmhNewUnits, "Here you go, have 10 miles/hr son");
 		assertEquals(kilometresNewUnits, "Here you go, have 10 miles ok");
 		assertEquals(kilometersNewUnits, "Here you go, have 10 miles.");
 	}
